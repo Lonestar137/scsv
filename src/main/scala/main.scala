@@ -509,7 +509,16 @@ object CLI extends OutputFunctions {
 
       } else if (input.toUpperCase.matches("^( ?)+IMPORT(.?)+")){
         //IMPORT CSV
-        if(input.toUpperCase.matches("^( ?)+IMPORT( ?)+[/\\w+]+.+")){
+         if(input.toUpperCase.matches("^( ?)+IMPORT +ALL ?+")){
+          //IMPORT CSV dir/
+          try{
+            assert(PostGreSQL.getUser() != "", "You need to login to a database first. Enter 'login'")
+            CsvDir.importFiles()
+          } catch {
+            case e: AssertionError => println(e)
+            case e: FileNotFoundException => println(e)
+          }
+        } else if(input.toUpperCase.matches("^( ?)+IMPORT( ?)+[/\\w+]+.+")){
           //IMPORT CSV file.csv
           printGreen("Importing file: " + input.split(" ").last)
           val file = input.split(" ")(1)
@@ -522,15 +531,6 @@ object CLI extends OutputFunctions {
           }
 
         //} else if(input.toUpperCase.matches("^( ?)+IMPORT(.?)+\\s+\\w+\\.csv( ?)+")){
-        } else if(input.toUpperCase.matches("^( ?)+IMPORT +ALL ?+")){
-          //IMPORT CSV dir/
-          try{
-            assert(PostGreSQL.getUser() != "", "You need to login to a database first. Enter 'login'")
-            CsvDir.importFiles()
-          } catch {
-            case e: AssertionError => println(e)
-            case e: FileNotFoundException => println(e)
-          }
         } else {
           //IMPORT CSV
           printYellow("Please enter a file name.")
