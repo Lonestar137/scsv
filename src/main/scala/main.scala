@@ -13,17 +13,6 @@ import org.postgresql.util.PSQLException
 
 import java.sql.ResultSetMetaData
 
-//CLI
-import com.googlecode.lanterna.screen.{Screen, TerminalScreen}
-import com.googlecode.lanterna.terminal.{Terminal}
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory
-import com.googlecode.lanterna.{TerminalSize, TerminalPosition}
-import com.googlecode.lanterna.input.KeyStroke
-import com.googlecode.lanterna.input.KeyType._
-import com.googlecode.lanterna.graphics.TextGraphics
-
-
-
 trait OutputFunctions {
 
   def printRed(str: String, newLine: Boolean = true) = {
