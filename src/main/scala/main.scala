@@ -138,7 +138,7 @@ object PostGreSQL extends OutputFunctions{
         rowNames = rowNames :+ nextColName
     }
     if (print) {
-      println(rowNames)
+      println(rowNames.toString.substring(4))
       println("---------------------------------------------------------------------------------------")
       while(resultSet.next()){
         var row = Seq[String]()
@@ -159,8 +159,15 @@ object PostGreSQL extends OutputFunctions{
         }
         rows = rows :+ row
       }
-      rows.take(printLimit)foreach{ r => println(r)}
+      //remove the "List" from start of each row
+
+      rows.take(printLimit).foreach{ r => println(r.toString.substring(4))}
       println("---------------------------------------------------------------------------------------")
+    }
+    if(print){
+      if(rows.length > printLimit){
+        println("... and " + (rows.length-printLimit) + " more rows.")
+      }
     }
 
     rows
@@ -327,7 +334,8 @@ object CSV extends OutputFunctions{
     val rowOne = csvArray(1)
     columnNames.foreach(col => {
 
-      print("Enter type for column " + col + " ref value in row one " +rowOne(i) +": ")
+      //print("Enter type for column " + col + " ref value in row one " +rowOne(i) +": ")
+      print("Enter type for column "); printGreen(""+col+""); print(" ref value in row one "); printYellow(rowOne(i)+""); print("Column Datatype: ")
       var input = scala.io.StdIn.readLine()
       if (input == "") {
         input = col + " VARCHAR"
@@ -481,7 +489,7 @@ object CLI extends OutputFunctions {
           print("Enter Password: ")
           password = System.console().readPassword()
           PostGreSQL.setCreds(user, password, database)
-          println("Login successful.")
+          printGreen("Login successful.", true)
         } catch {
           case e: PSQLException => println(e)
           case e: ExceptionInInitializerError => println("Failed to connect.  Check your credentials or connection."+"\n Current settings:"+"\n"+user+"\n"+database+" IP/Port: localhost@5432")
@@ -509,6 +517,7 @@ object CLI extends OutputFunctions {
             assert(PostGreSQL.getUser() != "", "You need to login to a database first. Enter 'login'")
             CSV.importCSV(file)
           } catch {
+            case e: AssertionError => println(e)
             case e: FileNotFoundException => println(e)
           }
 
@@ -531,7 +540,7 @@ object CLI extends OutputFunctions {
         //SET outputGovernor = 20
         if(input.toUpperCase.matches("( ?)+SET +OUTPUTGOVERNOR +\\d+")){
           outputGovernor = input.split(" ").last.toInt
-          println("Output govenor set to: " + outputGovernor)
+          println("Output governor set to: " + outputGovernor)
         } else {
           printYellow("Please enter a number.")
         }
