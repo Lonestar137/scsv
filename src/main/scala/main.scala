@@ -470,7 +470,8 @@ object CLI extends OutputFunctions {
         //TODO option to print more lines
         try{
           if(input.toUpperCase.matches("^( ?)+.DT( ?)+")){
-            PostGreSQL.selectFromTable("SELECT tablename FROM pg_catalog.pg_tables WHERE tablename NOT LIKE 'pg%';", true, outputGovernor)
+            //PostGreSQL.selectFromTable("SELECT tablename FROM pg_catalog.pg_tables WHERE tablename NOT LIKE 'pg%';", true, outputGovernor)
+            PostGreSQL.selectFromTable("SELECT tablename FROM pg_catalog.pg_tables WHERE tablename NOT LIKE ALL (ARRAY['pg%', 'sql%']);", true, outputGovernor)
           } else {
             PostGreSQL.selectFromTable(input, true, outputGovernor)
           }
