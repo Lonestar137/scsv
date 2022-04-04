@@ -105,6 +105,9 @@ object PostGreSQL extends OutputFunctions{
   def updateTable(sql: String): Unit = {
     val statement = connection.createStatement()
     statement.executeUpdate(sql)
+    //TEST
+    //val statement = connection.prepareStatement(sql).executeUpdate()
+
   }
 
 
