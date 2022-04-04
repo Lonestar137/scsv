@@ -1,13 +1,4 @@
-[0m[[0m[33mwarn[0m] [0m[0m/home/jonesgc/repos/scsv/src/main/scala/main.scala:627:32: a pure expression does nothing in statement position[0m
-[0m[[0m[33mwarn[0m] [0m[0m      case e: PSQLException => ""[0m
-[0m[[0m[33mwarn[0m] [0m[0m                               ^[0m
-[0m[[0m[33mwarn[0m] [0m[0m/home/jonesgc/repos/scsv/src/main/scala/main.scala:628:46: a pure expression does nothing in statement position[0m
-[0m[[0m[33mwarn[0m] [0m[0m      case e: ExceptionInInitializerError => ""[0m
-[0m[[0m[33mwarn[0m] [0m[0m                                             ^[0m
-[0m[[0m[33mwarn[0m] [0m[0m/home/jonesgc/repos/scsv/src/main/scala/main.scala:629:39: a pure expression does nothing in statement position[0m
-[0m[[0m[33mwarn[0m] [0m[0m      case e: NullPointerException => ""[0m
-[0m[[0m[33mwarn[0m] [0m[0m                                      ^[0m
 [0m[[0m[33mwarn[0m] [0m[0m11 deprecations (since 2.13.0)[0m
 [0m[[0m[33mwarn[0m] [0m[0m3 deprecations (since 2.13.2)[0m
 [0m[[0m[33mwarn[0m] [0m[0m14 deprecations in total; re-run with -deprecation for details[0m
-[0m[[0m[33mwarn[0m] [0m[0m6 warnings found[0m
+[0m[[0m[33mwarn[0m] [0m[0mthree warnings found[0m

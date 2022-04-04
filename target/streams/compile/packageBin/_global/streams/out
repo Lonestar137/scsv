@@ -8,6 +8,8 @@
 [0m[[0m[0mdebug[0m] [0m[0m	  /home/jonesgc/repos/scsv/target/scala-2.13/classes/CSV.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	PostGreSQL$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /home/jonesgc/repos/scsv/target/scala-2.13/classes/PostGreSQL$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Hive$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/jonesgc/repos/scsv/target/scala-2.13/classes/Hive$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	CsvImporter.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /home/jonesgc/repos/scsv/target/scala-2.13/classes/CsvImporter.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	CLI.class[0m
@@ -26,4 +28,6 @@
 [0m[[0m[0mdebug[0m] [0m[0m	  /home/jonesgc/repos/scsv/target/scala-2.13/classes/UnitTest$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	CSV$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /home/jonesgc/repos/scsv/target/scala-2.13/classes/CSV$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Hive.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/jonesgc/repos/scsv/target/scala-2.13/classes/Hive.class[0m
 [0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m

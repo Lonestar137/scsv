@@ -1,19 +1,11 @@
-[0m[[0m[31merror[0m] [0m[0morg.postgresql.util.PSQLException: FATAL: terminating connection due to administrator command[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2675)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2365)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:355)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:490)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:408)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:329)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:315)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:291)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.postgresql.jdbc.PgStatement.executeUpdate(PgStatement.java:265)[0m
-[0m[[0m[31merror[0m] [0m[0m	at PostGreSQL$.createTableFromSeq(main.scala:98)[0m
-[0m[[0m[31merror[0m] [0m[0m	at CSV$.createTable(main.scala:377)[0m
-[0m[[0m[31merror[0m] [0m[0m	at CSV$.importCSV(main.scala:389)[0m
-[0m[[0m[31merror[0m] [0m[0m	at CLI$.eventLoop(main.scala:531)[0m
-[0m[[0m[31merror[0m] [0m[0m	at CLI$.cli_main(main.scala:444)[0m
-[0m[[0m[31merror[0m] [0m[0m	at CsvImporter$.main(main.scala:622)[0m
+[0m[[0m[31merror[0m] [0m[0morg.apache.hive.service.cli.HiveSQLException: Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [root] does not have [USE] privilege on [Unknown resource!!][0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.jdbc.Utils.verifySuccess(Utils.java:267)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.jdbc.Utils.verifySuccessWithInfo(Utils.java:253)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.jdbc.HiveStatement.runAsyncOnServer(HiveStatement.java:313)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.jdbc.HiveStatement.execute(HiveStatement.java:253)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.jdbc.HiveStatement.executeQuery(HiveStatement.java:476)[0m
+[0m[[0m[31merror[0m] [0m[0m	at Hive$.executeQuery(main.scala:212)[0m
+[0m[[0m[31merror[0m] [0m[0m	at CsvImporter$.main(main.scala:773)[0m
 [0m[[0m[31merror[0m] [0m[0m	at CsvImporter.main(main.scala)[0m
 [0m[[0m[31merror[0m] [0m[0m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)[0m
 [0m[[0m[31merror[0m] [0m[0m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)[0m
@@ -32,4 +24,69 @@
 [0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)[0m
 [0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)[0m
 [0m[[0m[31merror[0m] [0m[0m	at java.base/java.lang.Thread.run(Thread.java:829)[0m
-[0m[[0m[31merror[0m] [0m[0m(Compile / [31mrun[0m) org.postgresql.util.PSQLException: FATAL: terminating connection due to administrator command[0m
+[0m[[0m[31merror[0m] [0m[0mCaused by: org.apache.hive.service.cli.HiveSQLException: Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [root] does not have [USE] privilege on [Unknown resource!!][0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.operation.Operation.toSQLException(Operation.java:335)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.operation.SQLOperation.prepare(SQLOperation.java:199)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.operation.SQLOperation.runInternal(SQLOperation.java:262)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.operation.Operation.run(Operation.java:247)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.session.HiveSessionImpl.executeStatementInternal(HiveSessionImpl.java:541)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.session.HiveSessionImpl.executeStatementAsync(HiveSessionImpl.java:527)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.GeneratedMethodAccessor65.invoke(Unknown Source)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.lang.reflect.Method.invoke(Method.java:498)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.session.HiveSessionProxy.invoke(HiveSessionProxy.java:78)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.session.HiveSessionProxy.access$000(HiveSessionProxy.java:36)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.session.HiveSessionProxy$1.run(HiveSessionProxy.java:63)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.security.AccessController.doPrivileged(Native Method)[0m
+[0m[[0m[31merror[0m] [0m[0m	at javax.security.auth.Subject.doAs(Subject.java:422)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1730)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.session.HiveSessionProxy.invoke(HiveSessionProxy.java:59)[0m
+[0m[[0m[31merror[0m] [0m[0m	at com.sun.proxy.$Proxy65.executeStatementAsync(Unknown Source)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.CLIService.executeStatementAsync(CLIService.java:315)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.thrift.ThriftCLIService.ExecuteStatement(ThriftCLIService.java:562)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.rpc.thrift.TCLIService$Processor$ExecuteStatement.getResult(TCLIService.java:1557)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.rpc.thrift.TCLIService$Processor$ExecuteStatement.getResult(TCLIService.java:1542)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.thrift.ProcessFunction.process(ProcessFunction.java:39)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.thrift.TBaseProcessor.process(TBaseProcessor.java:39)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.auth.TSetIpAddressProcessor.process(TSetIpAddressProcessor.java:56)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.thrift.server.TThreadPoolServer$WorkerProcess.run(TThreadPoolServer.java:286)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.lang.Thread.run(Thread.java:748)[0m
+[0m[[0m[31merror[0m] [0m[0mCaused by: java.lang.RuntimeException: org.apache.hadoop.hive.ql.security.authorization.plugin.HiveAccessControlException:Permission denied: user [root] does not have [USE] privilege on [Unknown resource!!][0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.ranger.authorization.hive.authorizer.RangerHiveAuthorizer.checkPrivileges(RangerHiveAuthorizer.java:483)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hadoop.hive.ql.Driver.doAuthorizationV2(Driver.java:1330)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hadoop.hive.ql.Driver.doAuthorization(Driver.java:1094)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:705)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hadoop.hive.ql.Driver.compileInternal(Driver.java:1863)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hadoop.hive.ql.Driver.compileAndRespond(Driver.java:1810)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hadoop.hive.ql.Driver.compileAndRespond(Driver.java:1805)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hadoop.hive.ql.reexec.ReExecDriver.compileAndRespond(ReExecDriver.java:126)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.operation.SQLOperation.prepare(SQLOperation.java:197)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.operation.SQLOperation.runInternal(SQLOperation.java:262)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.operation.Operation.run(Operation.java:247)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.session.HiveSessionImpl.executeStatementInternal(HiveSessionImpl.java:541)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.session.HiveSessionImpl.executeStatementAsync(HiveSessionImpl.java:527)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.GeneratedMethodAccessor65.invoke(Unknown Source)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.lang.reflect.Method.invoke(Method.java:498)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.session.HiveSessionProxy.invoke(HiveSessionProxy.java:78)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.session.HiveSessionProxy.access$000(HiveSessionProxy.java:36)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.session.HiveSessionProxy$1.run(HiveSessionProxy.java:63)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.security.AccessController.doPrivileged(Native Method)[0m
+[0m[[0m[31merror[0m] [0m[0m	at javax.security.auth.Subject.doAs(Subject.java:422)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1730)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.session.HiveSessionProxy.invoke(HiveSessionProxy.java:59)[0m
+[0m[[0m[31merror[0m] [0m[0m	at com.sun.proxy.$Proxy65.executeStatementAsync(Unknown Source)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.CLIService.executeStatementAsync(CLIService.java:315)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.cli.thrift.ThriftCLIService.ExecuteStatement(ThriftCLIService.java:562)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.rpc.thrift.TCLIService$Processor$ExecuteStatement.getResult(TCLIService.java:1557)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.rpc.thrift.TCLIService$Processor$ExecuteStatement.getResult(TCLIService.java:1542)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.thrift.ProcessFunction.process(ProcessFunction.java:39)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.thrift.TBaseProcessor.process(TBaseProcessor.java:39)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.hive.service.auth.TSetIpAddressProcessor.process(TSetIpAddressProcessor.java:56)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.thrift.server.TThreadPoolServer$WorkerProcess.run(TThreadPoolServer.java:286)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.lang.Thread.run(Thread.java:748)[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mrun[0m) org.apache.hive.service.cli.HiveSQLException: Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [root] does not have [USE] privilege on [Unknown resource!!][0m

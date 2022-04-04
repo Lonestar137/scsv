@@ -10,6 +10,7 @@ import java.io.FileOutputStream
 import java.io.FileReader
 import java.lang.ExceptionInInitializerError
 import org.postgresql.util.PSQLException
+import org.apache.hive.jdbc.HiveDriver
 
 import java.sql.ResultSetMetaData
 
@@ -56,15 +57,19 @@ object PostGreSQL extends OutputFunctions{
   def setUser(newUser: String) = {
     username = newUser
   }
-  def setDatabase(newDatabase: String) = {
-    url = "jdbc:postgresql://localhost:5432/" + newDatabase
+  def setDatabase(newDatabase: String, ip: String = "") = {
+    if (ip == "") {
+      url = "jdbc:postgresql://localhost:5432/" + newDatabase
+    } else {
+      url = "jdbc:postgresql://" + ip + ":5432/" + newDatabase
+    }
   }
 
   // Must be run for initial setup.
-  def setCreds(newUser: String, newPassword: Array[Char], newDatabase: String) = {
+  def setCreds(newUser: String, newPassword: Array[Char], newDatabase: String, ini_url: String = "jdbc:postgresql://localhost:5432/") = {
     username = newUser
     password = newPassword.mkString
-    url = "jdbc:postgresql://localhost:5432/" + newDatabase
+    url = ini_url + newDatabase
     // make the connection
     Class.forName(driver)
     connection = DriverManager.getConnection(url, username, password)
@@ -181,6 +186,111 @@ object PostGreSQL extends OutputFunctions{
   }
 
 } // end postgresql
+
+object Hive extends OutputFunctions{
+  val driver = "org.apache.hive.jdbc.HiveDriver"
+  var url = ""
+  var username = "" //i.e "postgres"
+  var password = ""
+
+  var connection: Connection = null
+
+  def setCreds(newUser: String, newPassword: Array[Char], newDatabase: String, ini_url: String = "jdbc:hive2://localhost:10000/default") = {
+    username = newUser
+    password = newPassword.mkString
+    url = ini_url + newDatabase
+    // make the connection
+    Class.forName(driver)
+    //connect to hive database 
+
+    connection = DriverManager.getConnection(url, username, password)
+  }
+
+
+  def executeQuery(query: String): Unit = {
+    val statement = connection.createStatement()
+    statement.executeQuery(query)
+  }
+
+  def selectFromTable(query: String, print: Boolean = false, printLimit: Int = 20): Seq[Any] = {
+
+    var swap = ""
+    var select_split = query.split(" ")
+    select_split.foreach(arg => {
+      swap = arg.replace(",", "")
+      select_split.drop(select_split.indexOf(arg))
+      select_split.update(select_split.indexOf(arg), swap)
+    })
+
+    var columns = select_split.slice(1, select_split.indexOf("FROM"))
+    val statement = connection.createStatement()
+    val resultSet = statement.executeQuery(query)
+    var rows = Seq[Object]()
+    val rsMetaData = resultSet.getMetaData()
+    val count = rsMetaData.getColumnCount()
+    var rowNames = Seq[String]()
+    val colName = ""
+    for (i <- 1 to count)
+    {
+      var nextColName = colName
+      nextColName += rsMetaData.getColumnName(i)
+      //adds spacing to end of column name
+      for (j <- nextColName.length to 16)
+        {
+          nextColName += " "
+        }
+        rowNames = rowNames :+ nextColName
+    }
+    if (print) {
+      println(rowNames.toString.substring(4))
+      println("---------------------------------------------------------------------------------------")
+      while(resultSet.next()){
+        var row = Seq[String]()
+        for (i <- 1 to resultSet.getMetaData.getColumnCount) {
+          val spacing = 16
+          var dataString = "NULL"
+          if (resultSet.getString(i) != null)
+          {
+            dataString = resultSet.getString(i)
+          }
+          var newDataString = dataString
+          for (j <- dataString.length to spacing)
+            {
+              newDataString += " "
+            }
+          row = row :+ newDataString
+
+        }
+        rows = rows :+ row
+      }
+      //remove the "List" from start of each row
+
+      rows.take(printLimit).foreach{ r => println(r.toString.substring(4))}
+      println("---------------------------------------------------------------------------------------")
+    }
+    if(print){
+      if(rows.length > printLimit){
+        println("... and " + (rows.length-printLimit) + " more rows.")
+      }
+    }
+
+    rows
+  }
+
+  def verifyConnection(): Boolean = {
+    try {
+      val statement = connection.createStatement()
+      statement.executeQuery("SELECT 1")
+      true
+    } catch {
+      case e: Exception => false
+    }
+  }
+
+
+
+
+}
 
 
 object UnitTest{
@@ -453,13 +563,14 @@ object CLI extends OutputFunctions {
     val helpText = List("import <csv file>", "help", "exit", "outputGovernor")
     var run = true
     var input = ""
-    var prompt = "=(QUERY)=> "
+    var prompt = "=(Console)> "
     var outputGovernor = 20
 
     //Database creds
     var user = ""
     var password = Array[Char]()
     var database = ""
+    var server = "localhost"
 
 
     println("---Enter options line-by-line---")
@@ -484,7 +595,9 @@ object CLI extends OutputFunctions {
         }
 
       } else if (input.toUpperCase.matches("^( ?)+LOGIN( ?)+")){
-        try{
+
+          printYellow("Define the database server.  Example: localhost or jdbc:postgresql://myServerIP:5432/ or jdbc:hive2://serverIP:port/")
+          server = scala.io.StdIn.readLine("Enter server.  Default is localhost: ")
           //get password from user without showing it 
           print("Enter database to use: ")
           database = scala.io.StdIn.readLine()
@@ -492,12 +605,43 @@ object CLI extends OutputFunctions {
           user = scala.io.StdIn.readLine()
           print("Enter Password: ")
           password = System.console().readPassword()
-          PostGreSQL.setCreds(user, password, database)
-          printGreen("Login successful.", true)
-        } catch {
-          case e: PSQLException => println(e)
-          case e: ExceptionInInitializerError => println("Failed to connect.  Check your credentials or connection."+"\n Current settings:"+"\n"+user+"\n"+database+" IP/Port: localhost@5432")
-        }
+
+          if (server == "" || server == "localhost"){
+              if (server == "") server = "localhost"
+              try{
+                PostGreSQL.setCreds(user, password, database)
+                printGreen("Login successful.", true)
+              } catch {
+                case e: PSQLException => println(e)
+                case e: ExceptionInInitializerError => println("Failed to connect.  Check your credentials or connection."+"\n Current settings:"+"\n"+user+"\n"+database+" IP/Port: localhost@5432")
+              }
+          } else if (server.matches("jdbc:postgresql:.+")){
+              server = server.replace("jdbc:postgresql://", "")
+              try{
+                PostGreSQL.setCreds(user, password, database, server)
+                printGreen("Login successful.", true)
+              } catch {
+                case e: PSQLException => println(e)
+                case e: ExceptionInInitializerError => println("Failed to connect.  Check your credentials or connection."+"\n Current settings:"+"\n"+user+"\n"+database+" IP/Port: localhost@5432")
+              }
+          } else if (server.matches("jdbc:hive2:.+")){ 
+              server = server.replace("jdbc:hive2://", "")
+              try{
+                Hive.setCreds(user, password, database, server)
+                printGreen("Login successful.", true)
+              } catch {
+                case e: PSQLException => println(e)
+                case e: ExceptionInInitializerError => println("Failed to connect.  Check your credentials or connection."+"\n Current settings:"+"\n"+user+"\n"+database+" IP/Port: localhost@5432")
+              }
+          } else {
+              printYellow("Invalid server.  Defaulting to localhost.")
+
+          }
+          // make prompt equal to the server ip, remove irrelevant parts
+          //if (server != "" || server != "localhost") server = server.replace("jdbc:postgresql://", "")
+          
+          prompt = "=("+server+": "+database+")> "
+
 
       } else if (input.toUpperCase.matches("^( ?)+CREATE(.?)+|^( ?)+INSERT(.?)+|^( ?)+UPDATE(.?)+|^( ?)+DELETE(.?)+|^( ?)+DROP(.?)+|^( ?)+ALTER(.?)+")){
         // INSERT DELETE, UPDATE, ALTER, DROP
@@ -619,15 +763,22 @@ object CsvImporter extends OutputFunctions{
     //CsvDir.importFiles()
     //var result = PostGreSQL.selectFromTable("SELECT * FROM airports ;", true, 10)
     
-    CLI.cli_main()
+    //CLI.cli_main()
+    
+    //TESTS
+    println("Password: ")
+    val password = System.console().readPassword()
+    Hive.setCreds("root", password, "default", "jdbc:hive2://sandbox:10000/")
+    if (Hive.verifyConnection()) println("Successfully connected to Hive.")
+    Hive.executeQuery("SHOW databases")
 
-    try{
-      PostGreSQL.closeConnection()
-    } catch {
-      case e: PSQLException => ""
-      case e: ExceptionInInitializerError => ""
-      case e: NullPointerException => ""
-    }
+    //try{
+    //  PostGreSQL.closeConnection()
+    //} catch {
+    //  case e: PSQLException => ""
+    //  case e: ExceptionInInitializerError => ""
+    //  case e: NullPointerException => ""
+    //}
 
   }
 }

@@ -2,6 +2,7 @@
 [0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
 [0m[[0m[0mdebug[0m] [0m[0m	CsvImporter.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	CSV.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Hive.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	PostGreSQL.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	CsvImporter$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	OutputFunctions.class[0m
@@ -13,9 +14,11 @@
 [0m[[0m[0mdebug[0m] [0m[0m	CSV$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	PostGreSQL$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	CLI.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Hive$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
 [0m[[0m[0mdebug[0m] [0m[0m	CsvImporter.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	CSV.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Hive.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	PostGreSQL.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	CsvImporter$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	OutputFunctions.class[0m
@@ -27,9 +30,11 @@
 [0m[[0m[0mdebug[0m] [0m[0m	CSV$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	PostGreSQL$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	CLI.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Hive$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0mRegistering generated classes:[0m
 [0m[[0m[0mdebug[0m] [0m[0m	CsvImporter.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	CSV.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Hive.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	PostGreSQL.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	CsvImporter$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	OutputFunctions.class[0m
@@ -41,4 +46,5 @@
 [0m[[0m[0mdebug[0m] [0m[0m	CSV$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	PostGreSQL$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	CLI.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Hive$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: /home/jonesgc/repos/scsv/target/scala-2.13/classes.bak[0m
