@@ -2460,3 +2460,324 @@ scala.meta.internal.metals.MetalsBspException: BSP connection failed in the atte
 2022.04.05 23:46:11 INFO  shutting down Metals[0m
 2022.04.05 23:46:11 INFO  Shut down connection with build server.[0m
 2022.04.05 23:46:11 INFO  Shut down connection with build server.[0m
+2022.04.06 00:32:02 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/.metals/lsp.trace.json or /home/jonesgc/.cache/metals/lsp.trace.json[0m
+2022.04.06 00:32:03 INFO  logging to file /home/jonesgc/repos/scsv/.metals/metals.log[0m
+2022.04.06 00:32:03 INFO  Started: Metals version 0.11.2 in workspace '/home/jonesgc/repos/scsv' for client Neovim 0.7.0.[0m
+2022.04.06 00:32:03 INFO  Parse release: 11.0.14.1[0m
+2022.04.06 00:32:03 WARN  Can't instantiate JavaInteractiveSemanticdb (version: Some(JdkVersion(11,0)), jdkHome: /usr/lib/jvm/java-11-openjdk-amd64, javac exists: false)[0m
+2022.04.06 00:32:07 INFO  time: initialize in 3.31s[0m
+2022.04.06 00:32:10 INFO  Attempting to connect to the build server...[0m
+2022.04.06 00:32:10 INFO  skipping build import with status 'Requested'[0m
+2022.04.06 00:32:10 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/.metals/bsp.trace.json or /home/jonesgc/.cache/metals/bsp.trace.json[0m
+2022.04.06 00:32:10 INFO  Attempting to connect to the build server...[0m
+2022.04.06 00:32:10 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/project/.metals/bsp.trace.json or /home/jonesgc/.cache/metals/bsp.trace.json[0m
+2022.04.06 00:32:10 INFO  time: Connected to build server in 0.94s[0m
+2022.04.06 00:32:10 INFO  Connected to Build server: Bloop v1.4.13[0m
+2022.04.06 00:32:11 INFO  time: Imported build in 0.17s[0m
+2022.04.06 00:32:19 INFO  shutting down Metals[0m
+2022.04.06 00:32:19 INFO  Shut down connection with build server.[0m
+2022.04.06 00:32:19 INFO  Shut down connection with build server.[0m
+2022.04.06 00:34:54 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/.metals/lsp.trace.json or /home/jonesgc/.cache/metals/lsp.trace.json[0m
+2022.04.06 00:34:55 INFO  logging to file /home/jonesgc/repos/scsv/.metals/metals.log[0m
+2022.04.06 00:34:55 INFO  Started: Metals version 0.11.2 in workspace '/home/jonesgc/repos/scsv' for client Neovim 0.7.0.[0m
+2022.04.06 00:34:55 INFO  Parse release: 11.0.14.1[0m
+2022.04.06 00:34:55 WARN  Can't instantiate JavaInteractiveSemanticdb (version: Some(JdkVersion(11,0)), jdkHome: /usr/lib/jvm/java-11-openjdk-amd64, javac exists: false)[0m
+2022.04.06 00:34:58 INFO  time: initialize in 3.07s[0m
+2022.04.06 00:34:59 INFO  Attempting to connect to the build server...[0m
+2022.04.06 00:35:00 INFO  skipping build import with status 'Requested'[0m
+2022.04.06 00:35:00 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/.metals/bsp.trace.json or /home/jonesgc/.cache/metals/bsp.trace.json[0m
+2022.04.06 00:35:00 INFO  Attempting to connect to the build server...[0m
+2022.04.06 00:35:00 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/project/.metals/bsp.trace.json or /home/jonesgc/.cache/metals/bsp.trace.json[0m
+2022.04.06 00:35:00 INFO  time: Connected to build server in 0.88s[0m
+2022.04.06 00:35:00 INFO  Connected to Build server: Bloop v1.4.13[0m
+2022.04.06 00:35:00 INFO  time: Imported build in 0.12s[0m
+2022.04.06 00:35:09 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.[0m
+2022.04.06 00:35:09 INFO  time: indexed workspace in 9.5s[0m
+2022.04.06 00:35:10 INFO  compiling root (1 scala source)[0m
+2022.04.06 00:35:18 WARN  11 deprecations (since 2.13.0)[0m
+2022.04.06 00:35:18 WARN  3 deprecations (since 2.13.2)[0m
+2022.04.06 00:35:18 WARN  14 deprecations in total; re-run with -deprecation for details[0m
+2022.04.06 00:35:18 INFO  time: compiled root in 7.92s[0m
+2022.04.06 00:35:18 INFO  compiling root-test (1 scala source)[0m
+2022.04.06 00:35:19 INFO  time: compiled root-test in 0.93s[0m
+2022.04.06 00:35:44 INFO  shutting down Metals[0m
+2022.04.06 00:35:44 INFO  Shut down connection with build server.[0m
+2022.04.06 00:35:44 INFO  Shut down connection with build server.[0m
+2022.04.06 01:16:56 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/.metals/lsp.trace.json or /home/jonesgc/.cache/metals/lsp.trace.json[0m
+2022.04.06 01:16:57 INFO  logging to file /home/jonesgc/repos/scsv/.metals/metals.log[0m
+2022.04.06 01:16:57 INFO  Started: Metals version 0.11.2 in workspace '/home/jonesgc/repos/scsv' for client Neovim 0.7.0.[0m
+2022.04.06 01:16:57 INFO  Parse release: 11.0.14.1[0m
+2022.04.06 01:16:57 WARN  Can't instantiate JavaInteractiveSemanticdb (version: Some(JdkVersion(11,0)), jdkHome: /usr/lib/jvm/java-11-openjdk-amd64, javac exists: false)[0m
+2022.04.06 01:20:41 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/.metals/lsp.trace.json or /home/jonesgc/.cache/metals/lsp.trace.json[0m
+2022.04.06 01:20:42 INFO  logging to file /home/jonesgc/repos/scsv/.metals/metals.log[0m
+2022.04.06 01:20:42 INFO  Started: Metals version 0.11.2 in workspace '/home/jonesgc/repos/scsv' for client Neovim 0.7.0.[0m
+2022.04.06 01:20:42 INFO  Parse release: 11.0.14.1[0m
+2022.04.06 01:20:42 WARN  Can't instantiate JavaInteractiveSemanticdb (version: Some(JdkVersion(11,0)), jdkHome: /usr/lib/jvm/java-11-openjdk-amd64, javac exists: false)[0m
+2022.04.06 01:20:46 INFO  time: initialize in 3.71s[0m
+2022.04.06 01:20:47 INFO  Attempting to connect to the build server...[0m
+2022.04.06 01:20:48 INFO  skipping build import with status 'Requested'[0m
+2022.04.06 01:20:48 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/.metals/bsp.trace.json or /home/jonesgc/.cache/metals/bsp.trace.json[0m
+2022.04.06 01:20:48 INFO  Attempting to connect to the build server...[0m
+2022.04.06 01:20:48 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/project/.metals/bsp.trace.json or /home/jonesgc/.cache/metals/bsp.trace.json[0m
+2022.04.06 01:20:48 INFO  time: Connected to build server in 0.82s[0m
+2022.04.06 01:20:48 INFO  Connected to Build server: Bloop v1.4.13[0m
+2022.04.06 01:20:48 INFO  time: Imported build in 0.21s[0m
+2022.04.06 01:21:00 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.[0m
+2022.04.06 01:21:01 INFO  time: indexed workspace in 12s[0m
+2022.04.06 01:21:05 INFO  compiling root-test (1 scala source)[0m
+2022.04.06 01:21:05 INFO  time: compiled root-test in 0.49s[0m
+2022.04.06 01:22:17 INFO  compiling root (1 scala source)[0m
+2022.04.06 01:22:20 WARN  11 deprecations (since 2.13.0)[0m
+2022.04.06 01:22:20 WARN  3 deprecations (since 2.13.2)[0m
+2022.04.06 01:22:20 WARN  14 deprecations in total; re-run with -deprecation for details[0m
+2022.04.06 01:22:20 INFO  time: compiled root in 3.57s[0m
+2022.04.06 08:33:31 INFO  shutting down Metals[0m
+2022.04.06 08:33:31 INFO  Shut down connection with build server.[0m
+2022.04.06 08:33:31 INFO  Shut down connection with build server.[0m
+2022.04.06 08:36:17 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/.metals/lsp.trace.json or /home/jonesgc/.cache/metals/lsp.trace.json[0m
+2022.04.06 08:36:18 INFO  logging to file /home/jonesgc/repos/scsv/.metals/metals.log[0m
+2022.04.06 08:36:18 INFO  Started: Metals version 0.11.2 in workspace '/home/jonesgc/repos/scsv' for client Neovim 0.7.0.[0m
+2022.04.06 08:36:18 INFO  Parse release: 11.0.14.1[0m
+2022.04.06 08:36:18 WARN  Can't instantiate JavaInteractiveSemanticdb (version: Some(JdkVersion(11,0)), jdkHome: /usr/lib/jvm/java-11-openjdk-amd64, javac exists: false)[0m
+2022.04.06 08:36:20 INFO  time: initialize in 1.89s[0m
+2022.04.06 08:36:21 INFO  Attempting to connect to the build server...[0m
+2022.04.06 08:36:20 INFO  skipping build import with status 'Requested'[0m
+2022.04.06 08:36:24 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/.metals/bsp.trace.json or /home/jonesgc/.cache/metals/bsp.trace.json[0m
+2022.04.06 08:36:24 INFO  Attempting to connect to the build server...[0m
+2022.04.06 08:36:24 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/project/.metals/bsp.trace.json or /home/jonesgc/.cache/metals/bsp.trace.json[0m
+2022.04.06 08:36:24 INFO  time: Connected to build server in 4.02s[0m
+2022.04.06 08:36:24 INFO  Connected to Build server: Bloop v1.4.13[0m
+2022.04.06 08:36:25 INFO  time: Imported build in 0.17s[0m
+2022.04.06 08:36:29 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.[0m
+2022.04.06 08:36:29 INFO  time: indexed workspace in 4.63s[0m
+2022.04.06 08:36:33 INFO  compiling root-test (1 scala source)[0m
+2022.04.06 08:36:34 INFO  time: compiled root-test in 1.56s[0m
+2022.04.06 08:37:28 INFO  compiling root (1 scala source)[0m
+2022.04.06 08:37:33 WARN  11 deprecations (since 2.13.0)[0m
+2022.04.06 08:37:33 WARN  3 deprecations (since 2.13.2)[0m
+2022.04.06 08:37:33 WARN  14 deprecations in total; re-run with -deprecation for details[0m
+2022.04.06 08:37:33 INFO  time: compiled root in 4.57s[0m
+2022.04.06 08:55:32 INFO  compiling root (1 scala source)[0m
+2022.04.06 08:55:35 WARN  11 deprecations (since 2.13.0)[0m
+2022.04.06 08:55:35 WARN  3 deprecations (since 2.13.2)[0m
+2022.04.06 08:55:35 WARN  14 deprecations in total; re-run with -deprecation for details[0m
+2022.04.06 08:55:35 INFO  time: compiled root in 2.75s[0m
+2022.04.06 08:56:32 INFO  compiling root (1 scala source)[0m
+2022.04.06 08:56:34 WARN  11 deprecations (since 2.13.0)[0m
+2022.04.06 08:56:34 WARN  3 deprecations (since 2.13.2)[0m
+2022.04.06 08:56:34 WARN  14 deprecations in total; re-run with -deprecation for details[0m
+2022.04.06 08:56:34 INFO  time: compiled root in 2.24s[0m
+2022.04.06 08:56:50 INFO  compiling root (1 scala source)[0m
+2022.04.06 08:56:52 WARN  11 deprecations (since 2.13.0)[0m
+2022.04.06 08:56:52 WARN  3 deprecations (since 2.13.2)[0m
+2022.04.06 08:56:52 WARN  14 deprecations in total; re-run with -deprecation for details[0m
+2022.04.06 08:56:52 INFO  time: compiled root in 1.97s[0m
+2022.04.06 08:57:12 INFO  compiling root (1 scala source)[0m
+2022.04.06 08:57:14 WARN  11 deprecations (since 2.13.0)[0m
+2022.04.06 08:57:14 WARN  3 deprecations (since 2.13.2)[0m
+2022.04.06 08:57:14 WARN  14 deprecations in total; re-run with -deprecation for details[0m
+2022.04.06 08:57:14 INFO  time: compiled root in 2s[0m
+2022.04.06 09:00:37 INFO  compiling root (1 scala source)[0m
+2022.04.06 09:00:37 INFO  time: compiled root in 0.41s[0m
+2022.04.06 09:01:03 INFO  compiling root (1 scala source)[0m
+2022.04.06 09:01:03 INFO  time: compiled root in 0.41s[0m
+2022.04.06 09:01:28 INFO  compiling root (1 scala source)[0m
+2022.04.06 09:01:29 WARN  11 deprecations (since 2.13.0)[0m
+2022.04.06 09:01:29 WARN  3 deprecations (since 2.13.2)[0m
+2022.04.06 09:01:29 WARN  14 deprecations in total; re-run with -deprecation for details[0m
+2022.04.06 09:01:29 INFO  time: compiled root in 1.9s[0m
+2022.04.06 09:01:40 INFO  shutting down Metals[0m
+2022.04.06 09:01:40 INFO  Shut down connection with build server.[0m
+2022.04.06 09:01:40 INFO  Shut down connection with build server.[0m
+2022.04.06 09:02:51 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/.metals/lsp.trace.json or /home/jonesgc/.cache/metals/lsp.trace.json[0m
+2022.04.06 09:02:52 INFO  logging to file /home/jonesgc/repos/scsv/.metals/metals.log[0m
+2022.04.06 09:02:52 INFO  Started: Metals version 0.11.2 in workspace '/home/jonesgc/repos/scsv' for client Neovim 0.7.0.[0m
+2022.04.06 09:02:52 INFO  Parse release: 11.0.14.1[0m
+2022.04.06 09:02:52 WARN  Can't instantiate JavaInteractiveSemanticdb (version: Some(JdkVersion(11,0)), jdkHome: /usr/lib/jvm/java-11-openjdk-amd64, javac exists: false)[0m
+2022.04.06 09:02:54 INFO  time: initialize in 2.19s[0m
+2022.04.06 09:02:55 INFO  Attempting to connect to the build server...[0m
+2022.04.06 09:02:54 INFO  skipping build import with status 'Requested'[0m
+2022.04.06 09:02:55 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/.metals/bsp.trace.json or /home/jonesgc/.cache/metals/bsp.trace.json[0m
+2022.04.06 09:02:55 INFO  Attempting to connect to the build server...[0m
+2022.04.06 09:02:55 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/project/.metals/bsp.trace.json or /home/jonesgc/.cache/metals/bsp.trace.json[0m
+2022.04.06 09:02:55 INFO  time: Connected to build server in 0.43s[0m
+2022.04.06 09:02:55 INFO  Connected to Build server: Bloop v1.4.13[0m
+2022.04.06 09:03:01 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.[0m
+2022.04.06 09:03:01 INFO  time: indexed workspace in 6.44s[0m
+2022.04.06 09:03:02 INFO  compiling root (1 scala source)[0m
+2022.04.06 09:03:05 WARN  11 deprecations (since 2.13.0)[0m
+2022.04.06 09:03:05 WARN  3 deprecations (since 2.13.2)[0m
+2022.04.06 09:03:05 WARN  14 deprecations in total; re-run with -deprecation for details[0m
+2022.04.06 09:03:05 INFO  time: compiled root in 3.56s[0m
+2022.04.06 09:03:05 INFO  compiling root-test (1 scala source)[0m
+2022.04.06 09:03:05 INFO  time: compiled root-test in 0.24s[0m
+2022.04.06 09:03:52 INFO  compiling root (1 scala source)[0m
+2022.04.06 09:03:52 INFO  time: compiled root in 0.43s[0m
+2022.04.06 09:04:51 INFO  compiling root (1 scala source)[0m
+2022.04.06 09:04:51 INFO  time: compiled root in 0.32s[0m
+2022.04.06 09:05:18 INFO  compiling root (1 scala source)[0m
+2022.04.06 09:05:19 WARN  11 deprecations (since 2.13.0)[0m
+2022.04.06 09:05:19 WARN  3 deprecations (since 2.13.2)[0m
+2022.04.06 09:05:19 WARN  14 deprecations in total; re-run with -deprecation for details[0m
+2022.04.06 09:05:19 INFO  time: compiled root in 1.79s[0m
+2022.04.06 09:05:28 INFO  shutting down Metals[0m
+2022.04.06 09:05:28 INFO  Shut down connection with build server.[0m
+2022.04.06 09:05:28 INFO  Shut down connection with build server.[0m
+2022.04.06 09:07:34 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/.metals/lsp.trace.json or /home/jonesgc/.cache/metals/lsp.trace.json[0m
+2022.04.06 09:07:35 INFO  logging to file /home/jonesgc/repos/scsv/.metals/metals.log[0m
+2022.04.06 09:07:35 INFO  Started: Metals version 0.11.2 in workspace '/home/jonesgc/repos/scsv' for client Neovim 0.7.0.[0m
+2022.04.06 09:07:35 INFO  Parse release: 11.0.14.1[0m
+2022.04.06 09:07:35 WARN  Can't instantiate JavaInteractiveSemanticdb (version: Some(JdkVersion(11,0)), jdkHome: /usr/lib/jvm/java-11-openjdk-amd64, javac exists: false)[0m
+2022.04.06 09:07:37 INFO  time: initialize in 2.12s[0m
+2022.04.06 09:07:38 INFO  Attempting to connect to the build server...[0m
+2022.04.06 09:07:38 INFO  skipping build import with status 'Requested'[0m
+2022.04.06 09:07:38 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/.metals/bsp.trace.json or /home/jonesgc/.cache/metals/bsp.trace.json[0m
+2022.04.06 09:07:38 INFO  Attempting to connect to the build server...[0m
+2022.04.06 09:07:38 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/project/.metals/bsp.trace.json or /home/jonesgc/.cache/metals/bsp.trace.json[0m
+2022.04.06 09:07:38 INFO  time: Connected to build server in 0.45s[0m
+2022.04.06 09:07:38 INFO  Connected to Build server: Bloop v1.4.13[0m
+2022.04.06 09:07:44 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.[0m
+2022.04.06 09:07:44 INFO  time: indexed workspace in 5.69s[0m
+2022.04.06 09:07:44 INFO  compiling root (1 scala source)[0m
+2022.04.06 09:07:47 WARN  11 deprecations (since 2.13.0)[0m
+2022.04.06 09:07:47 WARN  3 deprecations (since 2.13.2)[0m
+2022.04.06 09:07:47 WARN  14 deprecations in total; re-run with -deprecation for details[0m
+Apr 06, 2022 9:07:47 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+WARNING: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "build/taskFinish",
+  "params": {
+    "taskId": {
+      "id": "1"
+    },
+    "eventTime": 1649254067071,
+    "message": "Compiled \u0027root\u0027",
+    "status": 1,
+    "dataKind": "compile-report",
+    "data": {
+      "target": {
+        "uri": "file:/home/jonesgc/repos/scsv/?id\u003droot"
+      },
+      "errors": 0,
+      "warnings": 3,
+      "isNoOp": false,
+      "isLastCycle": true,
+      "clientDir": "file:///home/jonesgc/repos/scsv/.bloop/root/bloop-bsp-clients-classes/classes-Metals-T2_TO7TSRhehGdOBOc1yWw\u003d\u003d/",
+      "analysisOut": "file:///home/jonesgc/repos/scsv/.bloop/root/root-analysis.bin"
+    }
+  }
+}
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:152)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:187)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 11 more
+Caused by: java.lang.NullPointerException
+	at scala.meta.internal.metals.Compilers.$anonfun$didCompile$3(Compilers.scala:244)
+	at scala.meta.internal.metals.Compilers.$anonfun$didCompile$3$adapted(Compilers.scala:242)
+	at scala.Option.foreach(Option.scala:407)
+	at scala.meta.internal.metals.Compilers.$anonfun$didCompile$2(Compilers.scala:242)
+	at scala.meta.internal.metals.Compilers.$anonfun$didCompile$2$adapted(Compilers.scala:241)
+	at scala.collection.mutable.HashSet.foreach(HashSet.scala:79)
+	at scala.meta.internal.metals.Compilers.didCompile(Compilers.scala:241)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$updateWorkspaceDirectory$13(MetalsLanguageServer.scala:424)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$updateWorkspaceDirectory$13$adapted(MetalsLanguageServer.scala:422)
+	at scala.meta.internal.metals.clients.language.ForwardingMetalsBuildClient.$anonfun$buildTaskFinish$2(ForwardingMetalsBuildClient.scala:182)
+	at scala.Option.foreach(Option.scala:407)
+	at scala.meta.internal.metals.clients.language.ForwardingMetalsBuildClient.$anonfun$buildTaskFinish$1(ForwardingMetalsBuildClient.scala:179)
+	at scala.meta.internal.metals.clients.language.ForwardingMetalsBuildClient.$anonfun$buildTaskFinish$1$adapted(ForwardingMetalsBuildClient.scala:178)
+	at scala.Option.foreach(Option.scala:407)
+	at scala.meta.internal.metals.clients.language.ForwardingMetalsBuildClient.buildTaskFinish(ForwardingMetalsBuildClient.scala:178)
+	... 16 more
+
+2022.04.06 09:07:47 INFO  compiling root-test (1 scala source)[0m
+2022.04.06 09:07:47 INFO  time: compiled root-test in 89ms[0m
+2022.04.06 09:07:59 INFO  compiling root (1 scala source)[0m
+2022.04.06 09:07:59 INFO  time: compiled root in 0.3s[0m
+2022.04.06 09:08:05 INFO  compiling root (1 scala source)[0m
+2022.04.06 09:08:07 WARN  11 deprecations (since 2.13.0)[0m
+2022.04.06 09:08:07 WARN  3 deprecations (since 2.13.2)[0m
+2022.04.06 09:08:07 WARN  14 deprecations in total; re-run with -deprecation for details[0m
+2022.04.06 09:08:07 INFO  time: compiled root in 1.59s[0m
+2022.04.06 09:18:18 INFO  compiling root (1 scala source)[0m
+2022.04.06 09:18:18 INFO  time: compiled root in 0.27s[0m
+Apr 06, 2022 9:18:22 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 16
+2022.04.06 09:18:24 INFO  compiling root (1 scala source)[0m
+2022.04.06 09:18:26 WARN  11 deprecations (since 2.13.0)[0m
+2022.04.06 09:18:26 WARN  3 deprecations (since 2.13.2)[0m
+2022.04.06 09:18:26 WARN  14 deprecations in total; re-run with -deprecation for details[0m
+2022.04.06 09:18:26 INFO  time: compiled root in 1.54s[0m
+2022.04.06 09:18:28 INFO  shutting down Metals[0m
+2022.04.06 09:18:28 INFO  Shut down connection with build server.[0m
+2022.04.06 09:18:28 INFO  Shut down connection with build server.[0m
+2022.04.06 09:21:14 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/.metals/lsp.trace.json or /home/jonesgc/.cache/metals/lsp.trace.json[0m
+2022.04.06 09:21:14 INFO  logging to file /home/jonesgc/repos/scsv/.metals/metals.log[0m
+2022.04.06 09:21:14 INFO  Started: Metals version 0.11.2 in workspace '/home/jonesgc/repos/scsv' for client Neovim 0.7.0.[0m
+2022.04.06 09:21:14 INFO  Parse release: 11.0.14.1[0m
+2022.04.06 09:21:14 WARN  Can't instantiate JavaInteractiveSemanticdb (version: Some(JdkVersion(11,0)), jdkHome: /usr/lib/jvm/java-11-openjdk-amd64, javac exists: false)[0m
+2022.04.06 09:21:16 INFO  time: initialize in 1.91s[0m
+2022.04.06 09:21:17 INFO  Attempting to connect to the build server...[0m
+2022.04.06 09:21:16 INFO  skipping build import with status 'Requested'[0m
+2022.04.06 09:21:17 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/.metals/bsp.trace.json or /home/jonesgc/.cache/metals/bsp.trace.json[0m
+2022.04.06 09:21:17 INFO  Attempting to connect to the build server...[0m
+2022.04.06 09:21:17 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/jonesgc/repos/scsv/project/.metals/bsp.trace.json or /home/jonesgc/.cache/metals/bsp.trace.json[0m
+2022.04.06 09:21:17 INFO  time: Connected to build server in 0.41s[0m
+2022.04.06 09:21:17 INFO  Connected to Build server: Bloop v1.4.13[0m
+2022.04.06 09:21:17 INFO  time: Imported build in 0.13s[0m
+2022.04.06 09:21:22 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.[0m
+2022.04.06 09:21:22 INFO  time: indexed workspace in 5.63s[0m
+2022.04.06 09:21:25 INFO  compiling root-test (1 scala source)[0m
+2022.04.06 09:21:25 INFO  time: compiled root-test in 0.12s[0m
+2022.04.06 09:21:47 INFO  shutting down Metals[0m
+2022.04.06 09:21:47 INFO  Shut down connection with build server.[0m
+2022.04.06 09:21:47 INFO  Shut down connection with build server.[0m
+java.util.concurrent.RejectedExecutionException: Task scala.concurrent.impl.CallbackRunnable@2f2f11bc rejected from java.util.concurrent.ThreadPoolExecutor@b26f9de[Shutting down, pool size = 2, active threads = 2, queued tasks = 0, completed tasks = 284]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2055)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:825)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1355)
+	at scala.concurrent.impl.ExecutionContextImpl$$anon$4.execute(ExecutionContextImpl.scala:138)
+	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:72)
+	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1(Promise.scala:288)
+	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1$adapted(Promise.scala:288)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:288)
+	at scala.concurrent.Promise.complete(Promise.scala:53)
+	at scala.concurrent.Promise.complete$(Promise.scala:52)
+	at scala.concurrent.impl.Promise$DefaultPromise.complete(Promise.scala:187)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+java.util.concurrent.RejectedExecutionException: Task scala.concurrent.impl.CallbackRunnable@18e7c96e rejected from java.util.concurrent.ThreadPoolExecutor@b26f9de[Shutting down, pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 285]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2055)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:825)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1355)
+	at scala.concurrent.impl.ExecutionContextImpl$$anon$4.execute(ExecutionContextImpl.scala:138)
+	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:72)
+	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1(Promise.scala:288)
+	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1$adapted(Promise.scala:288)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:288)
+	at scala.concurrent.Promise.complete(Promise.scala:53)
+	at scala.concurrent.Promise.complete$(Promise.scala:52)
+	at scala.concurrent.impl.Promise$DefaultPromise.complete(Promise.scala:187)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)

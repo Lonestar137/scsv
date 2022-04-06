@@ -93,8 +93,19 @@ object PostGreSQL extends OutputFunctions{
 
   // formats the seq of data to be inserted into the database
   def createTableFromSeq(seq: Seq[Any], table: String) = {
+
+    // DETECT windows or linux 
+    val os = System.getProperty("os.name")
+    val delimiter = if (os.contains("Windows")) {
+      "\\"
+    } else {
+      "/"
+    }
+    // TODO make this work for windows
+
     val tableName = table.replaceAllLiterally("-", "_")
     println("Creating table " + tableName + "...")
+
 
     var createTable = "CREATE TABLE IF NOT EXISTS " + tableName + " (" + seq.mkString(", ") + ");"
     createTable = createTable.replaceAllLiterally("\"", "")
@@ -493,7 +504,15 @@ object CSV extends OutputFunctions{
   def importCSV(file: String, printResult: Boolean = false, upperLimit: Int = 20)={
     //imports file with one function call.
     
-    val tablename = file.split("/").last.split("\\.").head //name of csv file
+    //detect windows
+    val isWindows = System.getProperty("os.name").toLowerCase().contains("win")
+    var tablename = ""
+    //TODO test for windows
+    if (isWindows){
+        tablename = file.split("\\").last.split("\\.").head //name of csv file
+    } else {
+        tablename = file.split("/").last.split("\\.").head //name of csv file
+    }
     var csv = readCSV(file)
     val createStatement = getTableColumns(tablename, csv)
     createTable(createStatement, tablename)
@@ -604,7 +623,9 @@ object CLI extends OutputFunctions {
           print("Enter User: ")
           user = scala.io.StdIn.readLine()
           print("Enter Password: ")
+
           password = System.console().readPassword()
+          
 
           if (server == "" || server == "localhost"){
               if (server == "") server = "localhost"
@@ -763,17 +784,21 @@ object CsvImporter extends OutputFunctions{
     //CsvDir.importFiles()
     //var result = PostGreSQL.selectFromTable("SELECT * FROM airports ;", true, 10)
     
-    //CLI.cli_main()
-    
-    //TESTS
-    println("Password: ")
-    //val password = System.console().readPassword()
-    val password = "hive".toCharArray()
+    CLI.cli_main()
+    //val standard = System.console()
+    //var pass = standard.readPassword("Press any key to exit...")
 
-    Hive.setCreds("hive", password, "default", "jdbc:hive2://sandbox:10000/")
-    if (Hive.verifyConnection()) println("Successfully connected to Hive.")
-    Hive.executeQuery("SHOW databases")
-    Hive.selectFromTable("SHOW databases", true, 10)
+
+    
+    ////TESTS
+    //println("Password: ")
+    ////val password = System.console().readPassword()
+    //val password = "hive".toCharArray()
+
+    //Hive.setCreds("hive", password, "default", "jdbc:hive2://sandbox:10000/")
+    //if (Hive.verifyConnection()) println("Successfully connected to Hive.")
+    //Hive.executeQuery("SHOW databases")
+    //Hive.selectFromTable("SHOW databases", true, 10)
 
 
 
