@@ -767,10 +767,23 @@ object CsvImporter extends OutputFunctions{
     
     //TESTS
     println("Password: ")
-    val password = System.console().readPassword()
-    Hive.setCreds("root", password, "default", "jdbc:hive2://sandbox:10000/")
+    //val password = System.console().readPassword()
+    val password = "hive".toCharArray()
+
+    Hive.setCreds("hive", password, "default", "jdbc:hive2://sandbox:10000/")
     if (Hive.verifyConnection()) println("Successfully connected to Hive.")
     Hive.executeQuery("SHOW databases")
+    Hive.selectFromTable("SHOW databases", true, 10)
+
+
+
+
+
+
+    
+    
+
+
 
     //try{
     //  PostGreSQL.closeConnection()
