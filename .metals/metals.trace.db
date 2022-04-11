@@ -17,3 +17,5 @@ org.h2.message.DbException: Error opening database: "Sleep interrupted" [8000-20
 	at org.flywaydb.core.internal.jdbc.JdbcUtils.openConnection(JdbcUtils.java:48)
 	at org.flywaydb.core.internal.jdbc.JdbcConnectionFactory.<init>(JdbcConnectionFactory.java:74)
 	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:147)
+2022-04-06 13:57:53 database: opening /home/jonesgc/repos/scsv/.metals/metals
+2022-04-10 23:19:17 database: opening /home/jonesgc/repos/scsv/.metals/metals

@@ -1,3 +1,4 @@
+import scala.collection.mutable.ArraySeq
 import java.sql.DriverManager
 import java.sql.Connection
 import scala.annotation.meta.setter
@@ -463,7 +464,8 @@ object CSV extends OutputFunctions{
       var input = scala.io.StdIn.readLine()
       if (input == "") {
         input = col + " VARCHAR"
-      } else if (input.toUpperCase.matches("Do*") ) {
+        // TODO make sure double precision is still working, capitalized the O 
+      } else if (input.toUpperCase.matches("DO*") ) {
         print(" DOUBLE PRECISION")
         input = col + " DOUBLE PRECISION"
       } else if (input.toUpperCase.matches("B*") ) {
@@ -597,7 +599,8 @@ object CLI extends OutputFunctions {
       input = scala.io.StdIn.readLine(prompt)
 
       // regex look for \dt to show tables
-      
+      //
+
       if(input.toUpperCase.matches("^( ?)+SELECT(.?)+|^( ?)+.DT( ?)+")){
         //INPUT = SELECT * FROM tableName
         //TODO option to print more lines
@@ -643,7 +646,7 @@ object CLI extends OutputFunctions {
                 printGreen("Login successful.", true)
               } catch {
                 case e: PSQLException => println(e)
-                case e: ExceptionInInitializerError => println("Failed to connect.  Check your credentials or connection."+"\n Current settings:"+"\n"+user+"\n"+database+" IP/Port: localhost@5432")
+                case e: ExceptionInInitializerError => println("Failed to connect.  Check your credentials or connection."+"\n Current settings:"+"\n"+user+"\n"+database+" IP/Port: "+server)
               }
           } else if (server.matches("jdbc:hive2:.+")){ 
               server = server.replace("jdbc:hive2://", "")
@@ -652,7 +655,7 @@ object CLI extends OutputFunctions {
                 printGreen("Login successful.", true)
               } catch {
                 case e: PSQLException => println(e)
-                case e: ExceptionInInitializerError => println("Failed to connect.  Check your credentials or connection."+"\n Current settings:"+"\n"+user+"\n"+database+" IP/Port: localhost@5432")
+                case e: ExceptionInInitializerError => println("Failed to connect.  Check your credentials or connection."+"\n Current settings:"+"\n"+user+"\n"+database+" IP/Port: "+server)
               }
           } else {
               printYellow("Invalid server.  Defaulting to localhost.")
@@ -778,47 +781,51 @@ object CLI extends OutputFunctions {
 object CsvImporter extends OutputFunctions{
 
 
-  def main(args: Array[String]): Unit = {
+    def hiveTest()={
+        ////TESTS
+        //println("Password: ")
+        //val password = System.console().readPassword()
+        val password = "hive".toCharArray()
+
+        Hive.setCreds("hive", password, "movies", "jdbc:hive2://sandbox:10000/")
+        if (Hive.verifyConnection()) println("Successfully connected to Hive.")
+        //Hive.executeQuery("SHOW databases")
+        //Hive.selectFromTable("SHOW databases", true, 10)
+
+        var query = """
+        SELECT DISTINCT ratings.movieid, ratings.rating, movies.title, movies.genres 
+        FROM ratings INNER JOIN movies 
+        ON ratings.movieid=movies.movieid 
+        WHERE ratings.rating >= 5 AND movies.genres = 'Action|Comedy' order by ratings.movieid
+        """
+        Hive.selectFromTable(query, true, 10)
+
+    }
+
+    def cli_start()={
+        try{
+          CLI.cli_main()
+          PostGreSQL.closeConnection()
+        } catch {
+          case e: PSQLException => ""
+          case e: ExceptionInInitializerError => ""
+          case e: NullPointerException => ""
+        }
+    }
+
+    def main(args: Array[String]): Unit = {
 
     //PostGreSQL.updateTable("DROP TABLE IF EXISTS airports;")
     //CsvDir.importFiles()
     //var result = PostGreSQL.selectFromTable("SELECT * FROM airports ;", true, 10)
-    
-    CLI.cli_main()
-    //val standard = System.console()
-    //var pass = standard.readPassword("Press any key to exit...")
-
-
-    
-    ////TESTS
-    //println("Password: ")
-    ////val password = System.console().readPassword()
-    //val password = "hive".toCharArray()
-
-    //Hive.setCreds("hive", password, "default", "jdbc:hive2://sandbox:10000/")
-    //if (Hive.verifyConnection()) println("Successfully connected to Hive.")
-    //Hive.executeQuery("SHOW databases")
-    //Hive.selectFromTable("SHOW databases", true, 10)
 
 
 
+    cli_start()
+    //hiveTest()
 
 
-
-    
-    
-
-
-
-    //try{
-    //  PostGreSQL.closeConnection()
-    //} catch {
-    //  case e: PSQLException => ""
-    //  case e: ExceptionInInitializerError => ""
-    //  case e: NullPointerException => ""
-    //}
-
-  }
+    }
 }
 
 
