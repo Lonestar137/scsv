@@ -71,6 +71,10 @@ object PostGreSQL extends OutputFunctions{
 
   // Must be run for initial setup.
   def setCreds(newUser: String, newPassword: Array[Char], newDatabase: String, ini_url: String = "jdbc:postgresql://localhost:5432/") = {
+    if(ini_url != "jdbc:postgresql://localhost:5432/"){
+      url = "jdbc:postgresql://"+ini_url+ newDatabase
+    } 
+
     username = newUser
     password = newPassword.mkString
     url = ini_url + newDatabase
@@ -607,17 +611,32 @@ object CLI extends OutputFunctions {
       if(input.toUpperCase.matches("^( ?)+SELECT(.?)+|^( ?)+.DT( ?)+")){
         //INPUT = SELECT * FROM tableName
         //TODO option to print more lines
-        try{
-          if(input.toUpperCase.matches("^( ?)+.DT( ?)+")){
-            //PostGreSQL.selectFromTable("SELECT tablename FROM pg_catalog.pg_tables WHERE tablename NOT LIKE 'pg%';", true, outputGovernor)
-            PostGreSQL.selectFromTable("SELECT tablename FROM pg_catalog.pg_tables WHERE tablename NOT LIKE ALL (ARRAY['pg%', 'sql%']);", true, outputGovernor)
-          } else {
-            PostGreSQL.selectFromTable(input, true, outputGovernor)
-          }
-        } catch {
-          case e: PSQLException => println(e)
-          case e: NullPointerException => println("You need to login to a database first. Enter 'login'")
+        if(server.contains("localhost") || server.contains("postgresql")){
+            try{
+              if(input.toUpperCase.matches("^( ?)+.DT( ?)+")){
+                //PostGreSQL.selectFromTable("SELECT tablename FROM pg_catalog.pg_tables WHERE tablename NOT LIKE 'pg%';", true, outputGovernor)
+                PostGreSQL.selectFromTable("SELECT tablename FROM pg_catalog.pg_tables WHERE tablename NOT LIKE ALL (ARRAY['pg%', 'sql%']);", true, outputGovernor)
+              } else {
+                PostGreSQL.selectFromTable(input, true, outputGovernor)
+              }
+            } catch {
+              case e: PSQLException => println(e)
+              case e: NullPointerException => println("You need to login to a database first. Enter 'login'"+input+"  "+e)
+            }
+        } else if (server.contains("hive2")){
+            try{
+              if(input.toUpperCase.matches("^( ?)+.DT( ?)+")){
+                //Hive.selectFromTable("SELECT tablename FROM pg_catalog.pg_tables WHERE tablename NOT LIKE 'pg%';", true, outputGovernor)
+                Hive.selectFromTable("SELECT tablename FROM pg_catalog.pg_tables WHERE tablename NOT LIKE ALL (ARRAY['pg%', 'sql%']);", true, outputGovernor)
+              } else {
+                Hive.selectFromTable(input, true, outputGovernor)
+              }
+            } catch {
+              case e: PSQLException => println(e)
+              case e: NullPointerException => println("You need to login to a database first. Enter 'login'"+input+"  "+e)
+            }
         }
+
 
       } else if (input.toUpperCase.matches("^( ?)+LOGIN( ?)+")){
 
@@ -631,6 +650,7 @@ object CLI extends OutputFunctions {
           print("Enter Password: ")
 
           password = System.console().readPassword()
+          password = "hive".toCharArray()
           
 
           if (server == "" || server == "localhost"){
@@ -643,7 +663,7 @@ object CLI extends OutputFunctions {
                 case e: ExceptionInInitializerError => println("Failed to connect.  Check your credentials or connection."+"\n Current settings:"+"\n"+user+"\n"+database+" IP/Port: localhost@5432")
               }
           } else if (server.matches("jdbc:postgresql:.+")){
-              server = server.replace("jdbc:postgresql://", "")
+              //server = server.replace("jdbc:postgresql://", "")
               try{
                 PostGreSQL.setCreds(user, password, database, server)
                 printGreen("Login successful.", true)
@@ -652,13 +672,14 @@ object CLI extends OutputFunctions {
                 case e: ExceptionInInitializerError => println("Failed to connect.  Check your credentials or connection."+"\n Current settings:"+"\n"+user+"\n"+database+" IP/Port: "+server)
               }
           } else if (server.matches("jdbc:hive2:.+")){ 
-              server = server.replace("jdbc:hive2://", "")
+              //server = server.replace("jdbc:hive2://", "")
               try{
                 Hive.setCreds(user, password, database, server)
                 printGreen("Login successful.", true)
               } catch {
                 case e: PSQLException => println(e)
                 case e: ExceptionInInitializerError => println("Failed to connect.  Check your credentials or connection."+"\n Current settings:"+"\n"+user+"\n"+database+" IP/Port: "+server)
+                case e: java.sql.SQLException => println("Failed to connect.  Check your credentials or connection."+"\n Current settings:"+"\n"+user+"\nIP/Port: "+server+database+"\n"+e)
               }
           } else {
               printYellow("Invalid server.  Defaulting to localhost.")
@@ -670,7 +691,7 @@ object CLI extends OutputFunctions {
           prompt = "=("+server+": "+database+")> "
 
 
-      } else if (input.toUpperCase.matches("^( ?)+CREATE(.?)+|^( ?)+INSERT(.?)+|^( ?)+UPDATE(.?)+|^( ?)+DELETE(.?)+|^( ?)+DROP(.?)+|^( ?)+ALTER(.?)+")){
+      } else if (input.toUpperCase.matches("^( ?)+CREATE(.?)+|^( ?)+INSERT(.?)+|^( ?)+UPDATE(.?)+|^( ?)+DELETE(.?)+|^( ?)+DROP(.?)+|^( ?)+ALTER(.?)+|^( ?)+SHOW(.?)+")){
         // INSERT DELETE, UPDATE, ALTER, DROP
         try{
           PostGreSQL.updateTable(input)
@@ -825,6 +846,7 @@ object CsvImporter extends OutputFunctions{
 
     
 
+    //SqlReader.test()
 
 
     cli_start()
