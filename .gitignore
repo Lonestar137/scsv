@@ -6,3 +6,5 @@ TODO.md
 *.log
 
 .metals*
+.bloop*
+*.cache

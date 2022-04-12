@@ -4,7 +4,7 @@ import java.io.FileReader
 object SqlReader{
     // Regex of keywords to search sql file for.
     val keywords = List("^Name", "^Description", "^Type", "^Default", "^Required", "^Example", "^Notes")
-    var cliOptiosn = ""
+    var cliOptions = List[String]()
 
     // Read the file and return it as a string
     def readFile(file:String):String = {
@@ -22,13 +22,26 @@ object SqlReader{
       splitLines
     }
 
-    // Searchs query for keywords.  Removes keyword lines.
+    // TODO Searchs query for keywords.  Removes keyword lines.
     def queryParser(query: String): String = {
-      var lines = query.split(" ").toList
+      var lines = query.split(";").toList
+      var variable = ""
+      var run = true
+
+      // for line in lines 
+      // search line for ${keyword} if keyword, then append to cliOptions list 
+
 
       for(line <- lines){
         if (line.contains("--")) {
           lines = lines.filter(x => !x.contains("--"))
+        } else{
+          while(run){
+            variable = line.substring(line.indexOf("${"), line.indexOf("}"))
+            cliOptions = cliOptions ::: List(variable)
+
+          }
+
         }
       }
 

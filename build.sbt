@@ -14,6 +14,7 @@ lazy val root = (project in file("."))
     libraryDependencies += "org.postgresql" % "postgresql" % "42.3.3",
     libraryDependencies += "org.apache.hive" % "hive-jdbc" % "3.1.2",
     libraryDependencies += "com.github.tototoshi" %% "scala-csv" % "1.3.10",
+    //libraryDependencies += "com.github.ajrnz" %% "scemplate" % "0.5.2"
   )
 // NOTE: .settings appends certain ThisBuild / variables to the URI which makes it not work with some dependencies.
 // The below dependency is an example of such behavior.

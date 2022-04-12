@@ -3,7 +3,11 @@
 
 
 NAME selectME
-SELECT * FROM `users` WHERE `id` = 1;
+SELECT * FROM movies ${WHERE};
+
+
+
+
 
 
 NAME selectTWO

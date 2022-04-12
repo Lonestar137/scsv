@@ -306,6 +306,12 @@ object Hive extends OutputFunctions{
     }
   }
 
+  def updateTable(sql: String): Unit = {
+    val statement = connection.createStatement()
+    statement.executeUpdate(sql)
+
+  }
+
 
 
 
@@ -607,8 +613,8 @@ object CLI extends OutputFunctions {
 
       // regex look for \dt to show tables
       //
-
-      if(input.toUpperCase.matches("^( ?)+SELECT(.?)+|^( ?)+.DT( ?)+")){
+      //if(input.toUpperCase.matches("^( ?)+SELECT(.?)+|^( ?)+.DT( ?)+")){
+      if(input.toUpperCase.matches(".?(SHOW|SELECT|DT).+")){
         //INPUT = SELECT * FROM tableName
         //TODO option to print more lines
         if(server.contains("localhost") || server.contains("postgresql")){
@@ -622,6 +628,7 @@ object CLI extends OutputFunctions {
             } catch {
               case e: PSQLException => println(e)
               case e: NullPointerException => println("You need to login to a database first. Enter 'login'"+input+"  "+e)
+              case e: Exception => println("Unknown error: "+e)
             }
         } else if (server.contains("hive2")){
             try{
@@ -634,6 +641,8 @@ object CLI extends OutputFunctions {
             } catch {
               case e: PSQLException => println(e)
               case e: NullPointerException => println("You need to login to a database first. Enter 'login'"+input+"  "+e)
+              case e: org.apache.hive.service.cli.HiveSQLException => println("Semantic error occurred: "+e)
+              case e: Exception => println("Unknown error: "+e)
             }
         }
 
@@ -680,6 +689,7 @@ object CLI extends OutputFunctions {
                 case e: PSQLException => println(e)
                 case e: ExceptionInInitializerError => println("Failed to connect.  Check your credentials or connection."+"\n Current settings:"+"\n"+user+"\n"+database+" IP/Port: "+server)
                 case e: java.sql.SQLException => println("Failed to connect.  Check your credentials or connection."+"\n Current settings:"+"\n"+user+"\nIP/Port: "+server+database+"\n"+e)
+
               }
           } else {
               printYellow("Invalid server.  Defaulting to localhost.")
@@ -691,19 +701,35 @@ object CLI extends OutputFunctions {
           prompt = "=("+server+": "+database+")> "
 
 
-      } else if (input.toUpperCase.matches("^( ?)+CREATE(.?)+|^( ?)+INSERT(.?)+|^( ?)+UPDATE(.?)+|^( ?)+DELETE(.?)+|^( ?)+DROP(.?)+|^( ?)+ALTER(.?)+|^( ?)+SHOW(.?)+")){
+      //} else if (input.toUpperCase.matches("^( ?)+CREATE(.?)+|^( ?)+INSERT(.?)+|^( ?)+UPDATE(.?)+|^( ?)+DELETE(.?)+|^( ?)+DROP(.?)+|^( ?)+ALTER(.?)+|^( ?)+SHOW(.?)+")){
+      } else if (input.toUpperCase.trim().matches("(CREATE|ALTER|INSERT|UPDATE|DELETE|DROP).+")){
+        println("INPUT: "+input.toUpperCase)
         // INSERT DELETE, UPDATE, ALTER, DROP
-        try{
-          PostGreSQL.updateTable(input)
-          printGreen("Successfully executed query.")
-        } catch {
-          case e: PSQLException => println(e)
-          case e: ExceptionInInitializerError => ""
-          case e: NullPointerException => println("You need to login to a database first. Enter 'login'")
+        if (server.contains("localhost") || server.contains("postgresql")){
+            try{
+              PostGreSQL.updateTable(input)
+              printGreen("Successfully executed query.")
+            } catch {
+              case e: PSQLException => println(e)
+              case e: ExceptionInInitializerError => ""
+              case e: NullPointerException => println("You need to login to a database first. Enter 'login'." + e)
+              case e: Exception => println("Unknown error: "+e)
 
+            }
+        } else if (server.contains("hive2")){
+            try{
+              Hive.updateTable(input)
+              printGreen("Successfully executed query.")
+            } catch {
+              case e: PSQLException => println(e)
+              case e: ExceptionInInitializerError => ""
+              case e: NullPointerException => println("You need to login to a database first. Enter 'login'." + e)
+              case e: Exception => println("Unknown error: "+e)
+            }
         }
 
       } else if (input.toUpperCase.matches("^( ?)+IMPORT(.?)+")){
+        //TODO add hive support for this esle if statement
         //IMPORT CSV
          if(input.toUpperCase.matches("^( ?)+IMPORT +ALL ?+")){
           //IMPORT CSV dir/
@@ -713,6 +739,7 @@ object CLI extends OutputFunctions {
           } catch {
             case e: AssertionError => println(e)
             case e: FileNotFoundException => println(e)
+            case e: Exception => println("Unknown error for import: "+e)
           }
         } else if(input.toUpperCase.matches("^( ?)+IMPORT( ?)+[/\\w+]+.+")){
           //IMPORT CSV file.csv
@@ -724,6 +751,7 @@ object CLI extends OutputFunctions {
           } catch {
             case e: AssertionError => println(e)
             case e: FileNotFoundException => println(e)
+            case e: Exception => println("Unknown error for import: "+e)
           }
 
         //} else if(input.toUpperCase.matches("^( ?)+IMPORT(.?)+\\s+\\w+\\.csv( ?)+")){
@@ -734,11 +762,15 @@ object CLI extends OutputFunctions {
 
       } else if (input.toUpperCase.matches("^( ?)+SET(.?)+")){
         //SET outputGovernor = 20
-        if(input.toUpperCase.matches("( ?)+SET +OUTPUTGOVERNOR +\\d+")){
-          outputGovernor = input.split(" ").last.toInt
-          println("Output governor set to: " + outputGovernor)
-        } else {
-          printYellow("Please enter a number.")
+        try{
+          if(input.toUpperCase.matches("( ?)+SET +OUTPUTGOVERNOR +\\d+")){
+            outputGovernor = input.split(" ").last.toInt
+            println("Output governor set to: " + outputGovernor)
+          } else {
+            printYellow("Please enter a number.")
+          }
+        }catch{
+          case e: Exception => println("Unknown error for outputgov: "+e)
         }
       } else if (input.toUpperCase.matches("^( ?)+HELP(.?)+")){
         //HELP
@@ -746,17 +778,21 @@ object CLI extends OutputFunctions {
         options.foreach(option => printYellow(option + " ", false))
         println()
 
-        if (input.toUpperCase.matches("^( ?)+HELP(.?)+\\s+\\w+")){
-          //HELP <command>
-          val command = input.split(" ")(1)
-          if (options.contains(command)){
-            helpOptions(options, options.indexOf(command))
+        try{
+          if (input.toUpperCase.matches("^( ?)+HELP(.?)+\\s+\\w+")){
+            //HELP <command>
+            val command = input.split(" ")(1)
+            if (options.contains(command)){
+              helpOptions(options, options.indexOf(command))
+            } else {
+              printYellow("Command not found.")
+            }
           } else {
-            printYellow("Command not found.")
+            //HELP
+            printYellow("\nPlease enter a command. I.e. 'help import'")
           }
-        } else {
-          //HELP
-          printYellow("\nPlease enter a command. I.e. 'help import'")
+        } catch {
+          case e: Exception => println("Unknown error in help: "+e)
         }
 
       } else if (input.toUpperCase.matches("^( ?)+EXIT(.?)+|^( ?)+Q(.?)+|^( ?)+QUIT(.?)+")){
@@ -842,9 +878,6 @@ object CsvImporter extends OutputFunctions{
     //PostGreSQL.updateTable("DROP TABLE IF EXISTS airports;")
     //CsvDir.importFiles()
     //var result = PostGreSQL.selectFromTable("SELECT * FROM airports ;", true, 10)
-
-
-    
 
     //SqlReader.test()
 

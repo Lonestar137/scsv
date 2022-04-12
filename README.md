@@ -48,4 +48,4 @@ It is possible to import multiple csv files at once.
 
 
 
-
+SELECT DISTINCT ratings.movieid, ratings.rating, movies.title, movies.genres FROM ratings INNER JOIN movies ON ratings.movieid=movies.movieid WHERE ratings.rating >= 5 AND movies.genres = 'Action|Comedy' order by ratings.movieid
