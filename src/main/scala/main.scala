@@ -15,6 +15,9 @@ import org.apache.hive.jdbc.HiveDriver
 
 import java.sql.ResultSetMetaData
 
+// Custom classes
+import SqlReader._
+
 trait OutputFunctions {
 
   def printRed(str: String, newLine: Boolean = true) = {
@@ -818,6 +821,9 @@ object CsvImporter extends OutputFunctions{
     //PostGreSQL.updateTable("DROP TABLE IF EXISTS airports;")
     //CsvDir.importFiles()
     //var result = PostGreSQL.selectFromTable("SELECT * FROM airports ;", true, 10)
+
+
+    
 
 
 
